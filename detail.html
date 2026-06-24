@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>觀看影片</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="detail-header">
+        <button class="back-btn" onclick="goBack()">← 返回首頁</button>
+        <h2 id="detail-title">載入中...</h2>
+    </div>
+
+    <div class="video-container" id="video-wrapper">
+        <!-- Rumble iframe 會被 JS 動態插入 -->
+    </div>
+
+    <script src="script.js"></script>
+    <script>
+        function getVideoId() {
+            return parseInt(new URLSearchParams(location.search).get('id'));
+        }
+
+        function goBack() {
+            location.href = 'index.html';
+        }
+
+        function loadDetail() {
+            const id = getVideoId();
+            const video = videos.find(v => v.id === id);
+
+            if (video) {
+                document.getElementById('detail-title').textContent = video.title;
+                
+                // 插入 Rumble iframe
+                const wrapper = document.getElementById('video-wrapper');
+                wrapper.innerHTML = video.embedCode;
+            } else {
+                document.getElementById('detail-title').textContent = '找不到影片';
+            }
+        }
+
+        window.onload = loadDetail;
+    </script>
+</body>
+</html>
