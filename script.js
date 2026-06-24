@@ -32,9 +32,9 @@ const videos = [
     },
     {
         id: 6,
-        title: "影片標題 2",
+        title: "猜不透DJ版",
         thumbnail: "thumbnail/thumb6.jpg",
-        embedCode: '<iframe src="https://rumble.com/embed/另一個影片ID/" width="100%" height="100%" allowfullscreen></iframe>'
+        embedCode: '<iframe class="rumble" width="640" height="360" src="https://rumble.com/embed/v79kuc4/?pub=4p9lu0" frameborder="0" allowfullscreen></iframe>'
     },
     // ↓ 繼續在這裡新增影片 ↓
     // {
